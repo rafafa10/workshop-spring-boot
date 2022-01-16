@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.rafael.workshop.DTO.UserDTO;
 import com.rafael.workshop.model.User;
 import com.rafael.workshop.repository.UserRepository;
 import com.rafael.workshop.service.exception.ObjectNotFoundException;
@@ -33,4 +34,13 @@ public class UserService{
 		findById(id);
 		userRepository.deleteById(id);
 	}
+	
+	public User update(User user) {
+		Optional<User> newUser = userRepository.findById(user.getId());
+		user.setName(newUser.get().getName());
+		user.setName(newUser.get().getEmail());
+		return userRepository.save(newUser.get());
+	}
+	
+	
 }
