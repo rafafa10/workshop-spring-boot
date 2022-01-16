@@ -8,4 +8,5 @@ import com.rafael.workshop.model.User;
 @Repository
 public interface UserRepository extends MongoRepository<User, String>{
 
+
 }
