@@ -24,4 +24,9 @@ public class UserService{
 		Optional<User> user = userRepository.findById(id);
 		return user.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
+	
+	public User save(User user) {
+		return userRepository.save(user);
+	}
+	
 }
