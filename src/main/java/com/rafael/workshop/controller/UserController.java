@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.rafael.workshop.DTO.UserDTO;
+import com.rafael.workshop.model.Post;
 import com.rafael.workshop.model.User;
 import com.rafael.workshop.service.UserService;
 
@@ -59,6 +60,12 @@ public class UserController {
 		obj.setId(id);
 		obj = userService.update(obj);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@GetMapping(value="/{id}/posts")
+	public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+	    User user = userService.findById(id);
+	    return ResponseEntity.ok().body(user.getPostList());
 	}
 	
 }
